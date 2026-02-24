@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home IoT - Robotics Project</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #ffffff;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header section with emoji */
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        h1 emoji {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin: 2rem 0 1rem 0;
+            font-weight: 500;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin: 1.5rem 0 0.5rem 0;
+            color: #2c3e50;
+        }
+
+        /* Schedule section */
+        .schedule {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .schedule p {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        .calendar-link {
+            display: inline-block;
+            color: #0066cc;
+            text-decoration: none;
+            border-bottom: 1px dashed #0066cc;
+        }
+
+        /* Card grid for courses/projects */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #eee;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #2c3e50;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            color: #666;
+            margin: 0.5rem 0;
+        }
+
+        .card-date {
+            font-size: 0.9rem;
+            color: #999;
+            margin-top: 1rem;
+        }
+
+        /* News section */
+        .news-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .news-check {
+            color: #2ecc71;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .news-date {
+            color: #999;
+            font-size: 0.9rem;
+            min-width: 100px;
+        }
+
+        .news-link {
+            color: #0066cc;
+            text-decoration: none;
+            margin-left: auto;
+        }
+
+        .news-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Project embed section */
+        .project-embed {
+            margin: 2rem 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .project-embed iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            display: block;
+        }
+
+        /* Info boxes */
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #2c3e50;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        /* Command table */
+        .command-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: #f8f9fa;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .command-table th {
+            background: #2c3e50;
+            color: white;
+            padding: 0.8rem;
+            text-align: left;
+        }
+
+        .command-table td {
+            padding: 0.8rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .command-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Links */
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 2px solid #eee;
+            color: #666;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Title with Emoji -->
+    <h1>
+        <emoji>🤖</emoji> Smart Home IoT
+    </h1>
+
+    <!-- Schedule Section (like your example) -->
+    <h2>🗓️ Project Schedule</h2>
+    <div class="schedule">
+        <p><strong>January until 15.01.2025</strong></p>
+        <p>Please find the complete documentation and <a href="#" class="calendar-link">Google Calendar</a> for milestones</p>
+    </div>
+
+    <!-- Main Project Card (like Courses section) -->
+    <h2>📘 Project Overview</h2>
+    <div class="card-grid">
+        <div class="card">
+            <h3>💡 Automatic Light Control</h3>
+            <p>Motion sensor (PIR) detects presence and controls lighting with 5-second timeout after last motion.</p>
+            <div class="card-date">Sensor: PIR HC-SR501</div>
+        </div>
+        
+        <div class="card">
+            <h3>🌡️ Automatic Fan Control</h3>
+            <p>Temperature sensor (DHT22) monitors room temperature. Fan activates above 30°C.</p>
+            <div class="card-date">Sensor: DHT22</div>
+        </div>
+        
+        <div class="card">
+            <h3>📱 Remote Control Simulation</h3>
+            <p>Serial commands simulate mobile app control. Type '1', '0', or 'A' in Serial Monitor.</p>
+            <div class="card-date">Interface: Serial Commands</div>
+        </div>
+    </div>
+
+    <!-- Live Simulation Section -->
+    <h2>🎮 Live Simulation</h2>
+    <div class="project-embed">
+        <iframe src="https://wokwi.com/projects/456707908718215169/embed" allowfullscreen></iframe>
+    </div>
+
+    <!-- Quick Commands Info Box -->
+    <div class="info-box">
+        <strong>📱 Quick Serial Commands:</strong> In the simulation, click the Serial Monitor button (🔌) and type:
+        <code style="display: block; margin-top: 0.5rem;">'1' - Lamp ON | '0' - Lamp OFF | 'A' - AUTO Mode</code>
+    </div>
+
+    <!-- How It Works Section (like Projects section) -->
+    <h2>💡 How It Works</h2>
+    <div class="card-grid">
+        <div class="card">
+            <h3>🔧 Components</h3>
+            <p>• Arduino (simulated)<br>
+            • DHT22 Temperature Sensor<br>
+            • PIR Motion Sensor<br>
+            • 2x Relay Modules</p>
+        </div>
+        
+        <div class="card">
+            <h3>⚙️ Automation Logic</h3>
+            <p>• Fan: ON when temp ≥ 30°C<br>
+            • Light: ON with motion, OFF after 5s<br>
+            • Manual override via serial</p>
+        </div>
+        
+        <div class="card">
+            <h3>🔌 Pin Connections</h3>
+            <p>• DHT22 → Pin 2<br>
+            • PIR → Pin 3<br>
+            • Lamp Relay → Pin 4<br>
+            • Fan Relay → Pin 5</p>
+        </div>
+    </div>
+
+    <!-- Commands Table (like a mini project card) -->
+    <h2>📋 Command Reference</h2>
+    <table class="command-table">
+        <thead>
+            <tr>
+                <th>Command</th>
+                <th>Function</th>
+                <th>Mode</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>'1'</code></td>
+                <td>Turn Lamp ON</td>
+                <td>Manual Override</td>
+            </tr>
+            <tr>
+                <td><code>'0'</code></td>
+                <td>Turn Lamp OFF</td>
+                <td>Manual Override</td>
+            </tr>
+            <tr>
+                <td><code>'A'</code></td>
+                <td>Return to AUTO mode</td>
+                <td>Automatic</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- News Section (exactly like your example) -->
+    <h2>📌 News</h2>
+    
+    <div class="news-item">
+        <span class="news-check">✅</span>
+        <span class="news-date">21.12.2024</span>
+        <span>Add Smart Home IoT project with Wokwi simulation</span>
+        <a href="#" class="news-link">📂 Details</a>
+    </div>
+    
+    <div class="news-item">
+        <span class="news-check">✅</span>
+        <span class="news-date">20.12.2024</span>
+        <span>Update temperature threshold to 30°C for better testing</span>
+        <a href="#" class="news-link">📂 Details</a>
+    </div>
+    
+    <div class="news-item">
+        <span class="news-check">✅</span>
+        <span class="news-date">19.12.2024</span>
+        <span>Add manual override feature with serial commands</span>
+        <a href="#" class="news-link">📂 Details</a>
+    </div>
+    
+    <div style="margin-top: 1rem;">
+        <a href="#">📂 All news</a>
+    </div>
+
+    <!-- Additional Resources -->
+    <h2>📚 Resources</h2>
+    <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin: 1rem 0;">
+        <a href="#">📄 Complete Code</a>
+        <a href="#">🔌 Circuit Diagram</a>
+        <a href="#">📊 DHT22 Datasheet</a>
+        <a href="#">📡 PIR Sensor Guide</a>
+        <a href="#">🎓 Arduino Tutorial</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>🤖 Robotics Subject Project | Smart Home IoT Virtual Prototype | Built with Arduino on Wokwi</p>
+        <p style="font-size: 0.9rem; margin-top: 0.5rem;">📅 Last updated: 21.12.2024</p>
+    </footer>
+</body>
+</html>
