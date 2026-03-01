@@ -105,29 +105,8 @@
             color: #2ecc71;
         }
 
-        .sub-menu {
-            padding-left: 3rem;
-            background: #243342;
-        }
-
-        .sub-menu-item {
-            padding: 0.6rem 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            cursor: pointer;
-            transition: background 0.3s;
-            color: #bdc3c7;
-            font-size: 0.95rem;
-        }
-
-        .sub-menu-item:hover {
-            background: #2c3e50;
-            color: white;
-        }
-
-        .sub-menu-item.active {
-            color: #e67e22;
+        .menu-item span {
+            flex: 1;
         }
 
         .badge {
@@ -136,7 +115,6 @@
             font-size: 0.7rem;
             padding: 0.2rem 0.5rem;
             border-radius: 12px;
-            margin-left: auto;
         }
 
         /* Main Content Styles */
@@ -217,14 +195,13 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 0.9rem;
-            cursor: pointer;
         }
 
         .card-link:hover {
             text-decoration: underline;
         }
 
-        /* Folder View Styles */
+        /* Projects and Tasks specific styles */
         .folder-view {
             background: white;
             border-radius: 12px;
@@ -257,7 +234,6 @@
             padding: 1rem;
             border-bottom: 1px solid #f0f0f0;
             transition: background 0.3s;
-            cursor: pointer;
         }
 
         .list-item:hover {
@@ -311,28 +287,6 @@
             color: #004085;
         }
 
-        /* Project Embed */
-        .project-embed {
-            margin: 2rem 0;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .project-embed iframe {
-            width: 100%;
-            height: 500px;
-            border: none;
-            display: block;
-        }
-
-        .info-box {
-            background: #f8f9fa;
-            border-left: 4px solid #e67e22;
-            padding: 1rem;
-            margin: 1rem 0;
-        }
-
         /* Hide/show content sections */
         .content-section {
             display: none;
@@ -379,26 +333,6 @@
             font-size: 0.9rem;
             opacity: 0.9;
         }
-
-        /* Breadcrumb */
-        .breadcrumb {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #7f8c8d;
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-
-        .breadcrumb a {
-            color: #e67e22;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .breadcrumb a:hover {
-            text-decoration: underline;
-        }
     </style>
 </head>
 <body>
@@ -420,62 +354,28 @@
                     </div>
                 </div>
 
-                <!-- Projects Folder (with sub-items) -->
+                <!-- Projects Folder -->
                 <div class="menu-section">
                     <div class="menu-section-title">FOLDERS</div>
-                    
-                    <!-- Projects Folder (click to open) -->
-                    <div class="menu-item" onclick="toggleSubMenu('projects-submenu')">
+                    <div class="menu-item" onclick="showSection('projects')">
                         <i class="folder-icon">📁</i>
                         <span>Projects</span>
                         <span class="badge">3</span>
-                        <i style="font-size: 0.8rem; margin-left: auto;">▼</i>
                     </div>
-                    
-                    <!-- Sub-menu for Projects (visible by default) -->
-                    <div id="projects-submenu" class="sub-menu">
-                        <div class="sub-menu-item" onclick="showSection('smart-home-project')">
-                            <i>💡</i>
-                            <span>Smart Home IoT</span>
-                        </div>
-                        <div class="sub-menu-item" onclick="showSection('line-follower')">
-                            <i>🚗</i>
-                            <span>Line Follower</span>
-                        </div>
-                        <div class="sub-menu-item" onclick="showSection('robotic-arm')">
-                            <i>🦾</i>
-                            <span>Robotic Arm</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Tasks Folder -->
-                    <div class="menu-item" onclick="toggleSubMenu('tasks-submenu')">
+                    <div class="menu-item" onclick="showSection('tasks')">
                         <i class="task-icon">✓</i>
                         <span>Tasks</span>
                         <span class="badge">5</span>
-                        <i style="font-size: 0.8rem; margin-left: auto;">▼</i>
-                    </div>
-                    
-                    <!-- Sub-menu for Tasks -->
-                    <div id="tasks-submenu" class="sub-menu">
-                        <div class="sub-menu-item" onclick="showSection('task-doc')">
-                            <i>📝</i>
-                            <span>Documentation</span>
-                        </div>
-                        <div class="sub-menu-item" onclick="showSection('task-testing')">
-                            <i>🎮</i>
-                            <span>Testing</span>
-                        </div>
-                        <div class="sub-menu-item" onclick="showSection('task-presentation')">
-                            <i>📊</i>
-                            <span>Presentation</span>
-                        </div>
                     </div>
                 </div>
 
                 <!-- Quick Links -->
                 <div class="menu-section">
                     <div class="menu-section-title">QUICK LINKS</div>
+                    <div class="menu-item" onclick="showSection('smart-home')">
+                        <i class="project-icon">💡</i>
+                        <span>Smart Home IoT</span>
+                    </div>
                     <div class="menu-item" onclick="showSection('resources')">
                         <i>📚</i>
                         <span>Resources</span>
@@ -521,7 +421,7 @@
                         <p>Automatic light and fan control with motion and temperature sensors</p>
                         <div class="card-footer">
                             <span class="card-date">Updated: 25 Feb 2026</span>
-                            <span class="card-link" onclick="showSection('smart-home-project')">View →</span>
+                            <a href="#" class="card-link" onclick="showSection('smart-home'); return false;">View →</a>
                         </div>
                     </div>
                     
@@ -531,7 +431,7 @@
                         <p>Arduino-based robot that follows black line (Coming soon)</p>
                         <div class="card-footer">
                             <span class="card-date">In Progress</span>
-                            <span class="card-link" onclick="showSection('line-follower')">View →</span>
+                            <span class="card-link">Soon</span>
                         </div>
                     </div>
                     
@@ -541,134 +441,128 @@
                         <p>Servo-controlled robotic arm (Coming soon)</p>
                         <div class="card-footer">
                             <span class="card-date">Planned</span>
-                            <span class="card-link" onclick="showSection('robotic-arm')">View →</span>
+                            <span class="card-link">Soon</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Smart Home IoT Project (inside Projects folder) -->
-            <div id="smart-home-project" class="content-section">
-                <div class="breadcrumb">
-                    <span onclick="showSection('home')" style="cursor: pointer;">Home</span> › 
-                    <span onclick="showSection('projects')" style="cursor: pointer;">Projects</span> › 
-                    <span>Smart Home IoT</span>
-                </div>
-
-                <div class="content-header">
-                    <h1>💡 Smart Home IoT System</h1>
-                    <p>Automatic light and fan control with motion and temperature sensors</p>
-                </div>
-
-                <!-- Wokwi Simulation -->
-                <div class="project-embed">
-                    <iframe src="https://wokwi.com/projects/456707908718215169/embed" allowfullscreen></iframe>
-                </div>
-
-                <!-- Quick Commands -->
-                <div class="info-box">
-                    <strong>📱 Serial Commands:</strong> In the simulation, click the Serial Monitor button (🔌) and type:
-                    <code style="display: block; margin-top: 0.5rem;">'1' - Lamp ON | '0' - Lamp OFF | 'A' - AUTO Mode</code>
-                </div>
-
-                <!-- Project Details -->
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2rem;">
-                    <div class="card">
-                        <h3>🔧 Components Used</h3>
-                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-                            <li>Arduino Uno (simulated)</li>
-                            <li>DHT22 Temperature Sensor</li>
-                            <li>PIR Motion Sensor (HC-SR501)</li>
-                            <li>2x Relay Modules</li>
-                            <li>LED (simulates lamp)</li>
-                            <li>DC Motor (simulates fan)</li>
-                        </ul>
+            <!-- Projects Section -->
+            <div id="projects" class="content-section">
+                <div class="folder-view">
+                    <div class="folder-header">
+                        <i style="font-size: 2rem;">📁</i>
+                        <h2>Projects Folder</h2>
                     </div>
 
+                    <div class="list-item" onclick="showSection('smart-home')" style="cursor: pointer;">
+                        <div class="list-item-icon">💡</div>
+                        <div class="list-item-content">
+                            <div class="list-item-title">Smart Home IoT System</div>
+                            <div class="list-item-subtitle">Completed - 25 Feb 2026</div>
+                        </div>
+                        <div class="list-item-status status-completed">Completed</div>
+                    </div>
+
+                    <div class="list-item">
+                        <div class="list-item-icon">🚗</div>
+                        <div class="list-item-content">
+                            <div class="list-item-title">Line Follower Robot</div>
+                            <div class="list-item-subtitle">In development</div>
+                        </div>
+                        <div class="list-item-status status-progress">In Progress</div>
+                    </div>
+
+                    <div class="list-item">
+                        <div class="list-item-icon">🦾</div>
+                        <div class="list-item-content">
+                            <div class="list-item-title">Robotic Arm</div>
+                            <div class="list-item-subtitle">Planning phase</div>
+                        </div>
+                        <div class="list-item-status status-pending">Planned</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tasks Section -->
+            <div id="tasks" class="content-section">
+                <div class="folder-view">
+                    <div class="folder-header">
+                        <i style="font-size: 2rem;">✓</i>
+                        <h2>Tasks Folder</h2>
+                    </div>
+
+                    <div class="list-item">
+                        <div class="list-item-icon">📝</div>
+                        <div class="list-item-content">
+                            <div class="list-item-title">Complete project documentation</div>
+                            <div class="list-item-subtitle">Due: 28 Feb 2026</div>
+                        </div>
+                        <div class="list-item-status status-progress">In Progress</div>
+                    </div>
+
+                    <div class="list-item">
+                        <div class="list-item-icon">🎮</div>
+                        <div class="list-item-content">
+                            <div class="list-item-title">Test all sensors in simulation</div>
+                            <div class="list-item-subtitle">Completed: 24 Feb 2026</div>
+                        </div>
+                        <div class="list-item-status status-completed">Completed</div>
+                    </div>
+
+                    <div class="list-item">
+                        <div class="list-item-icon">🔧</div>
+                        <div class="list-item-content">
+                            <div class="list-item-title">Calibrate temperature threshold</div>
+                            <div class="list-item-subtitle">Completed: 23 Feb 2026</div>
+                        </div>
+                        <div class="list-item-status status-completed">Completed</div>
+                    </div>
+
+                    <div class="list-item">
+                        <div class="list-item-icon">📊</div>
+                        <div class="list-item-content">
+                            <div class="list-item-title">Prepare project presentation</div>
+                            <div class="list-item-subtitle">Due: 01 March 2026</div>
+                        </div>
+                        <div class="list-item-status status-pending">Pending</div>
+                    </div>
+
+                    <div class="list-item">
+                        <div class="list-item-icon">📹</div>
+                        <div class="list-item-content">
+                            <div class="list-item-title">Record demo video</div>
+                            <div class="list-item-subtitle">Due: 02 March 2026</div>
+                        </div>
+                        <div class="list-item-status status-pending">Pending</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Smart Home IoT Project Section -->
+            <div id="smart-home" class="content-section">
+                <div class="content-header">
+                    <h1>💡 Smart Home IoT Project</h1>
+                    <p>Automatic light and fan control system</p>
+                </div>
+
+                <div class="project-embed" style="margin: 2rem 0; border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
+                    <iframe src="https://wokwi.com/projects/456707908718215169/embed" width="100%" height="500px" style="border: none;"></iframe>
+                </div>
+
+                <div class="info-box" style="background: #f8f9fa; border-left: 4px solid #e67e22; padding: 1rem; margin: 1rem 0;">
+                    <strong>📱 Serial Commands:</strong> Type '1' (Lamp ON), '0' (Lamp OFF), 'A' (AUTO Mode)
+                </div>
+
+                <div class="card-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem;">
+                    <div class="card">
+                        <h3>🔧 Components</h3>
+                        <p>Arduino, DHT22, PIR Sensor, 2x Relays</p>
+                    </div>
                     <div class="card">
                         <h3>⚙️ Features</h3>
-                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-                            <li>Auto Light: Motion-activated with 5-second timeout</li>
-                            <li>Auto Fan: Turns ON when temperature > 30°C</li>
-                            <li>Manual override via serial commands</li>
-                            <li>Real-time sensor monitoring</li>
-                        </ul>
+                        <p>Auto light (motion), Auto fan (temp >30°C)</p>
                     </div>
-
-                    <div class="card">
-                        <h3>🔌 Pin Connections</h3>
-                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-                            <li>DHT22 Data → Pin 2</li>
-                            <li>PIR Output → Pin 3</li>
-                            <li>Lamp Relay → Pin 4</li>
-                            <li>Fan Relay → Pin 5</li>
-                        </ul>
-                    </div>
-
-                    <div class="card">
-                        <h3>📅 Project Status</h3>
-                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-                            <li>✅ Completed: 25 February 2026</li>
-                            <li>✅ Testing: Passed</li>
-                            <li>✅ Documentation: Ready</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Line Follower (placeholder) -->
-            <div id="line-follower" class="content-section">
-                <div class="breadcrumb">
-                    <span onclick="showSection('home')" style="cursor: pointer;">Home</span> › 
-                    <span onclick="showSection('projects')" style="cursor: pointer;">Projects</span> › 
-                    <span>Line Follower Robot</span>
-                </div>
-                <div class="content-header">
-                    <h1>🚗 Line Follower Robot</h1>
-                    <p>Coming Soon - Project in Development</p>
-                </div>
-                <div class="card">
-                    <p>This project is currently under development. Check back later!</p>
-                </div>
-            </div>
-
-            <!-- Robotic Arm (placeholder) -->
-            <div id="robotic-arm" class="content-section">
-                <div class="breadcrumb">
-                    <span onclick="showSection('home')" style="cursor: pointer;">Home</span> › 
-                    <span onclick="showSection('projects')" style="cursor: pointer;">Projects</span> › 
-                    <span>Robotic Arm</span>
-                </div>
-                <div class="content-header">
-                    <h1>🦾 Robotic Arm</h1>
-                    <p>Coming Soon - Project in Planning</p>
-                </div>
-                <div class="card">
-                    <p>This project is currently in the planning phase. Check back later!</p>
-                </div>
-            </div>
-
-            <!-- Task: Documentation -->
-            <div id="task-doc" class="content-section">
-                <div class="breadcrumb">
-                    <span onclick="showSection('home')" style="cursor: pointer;">Home</span> › 
-                    <span onclick="showSection('tasks')" style="cursor: pointer;">Tasks</span> › 
-                    <span>Documentation</span>
-                </div>
-                <div class="content-header">
-                    <h1>📝 Complete Project Documentation</h1>
-                    <p>Due: 28 February 2026</p>
-                </div>
-                <div class="card">
-                    <h3>Task Details</h3>
-                    <p>Write complete documentation for Smart Home IoT project including:</p>
-                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-                        <li>Project overview and objectives</li>
-                        <li>Circuit diagram and connections</li>
-                        <li>Code explanation</li>
-                        <li>Testing results</li>
-                        <li>Conclusion</li>
-                    </ul>
                 </div>
             </div>
 
@@ -729,25 +623,8 @@
                 menuItems[i].classList.remove('active');
             }
             
-            // Update active sub-menu items
-            var subMenuItems = document.getElementsByClassName('sub-menu-item');
-            for(var i = 0; i < subMenuItems.length; i++) {
-                subMenuItems[i].classList.remove('active');
-            }
-            
-            // If we have event, highlight the clicked item
-            if(event && event.currentTarget) {
-                event.currentTarget.classList.add('active');
-            }
-        }
-
-        function toggleSubMenu(submenuId) {
-            var submenu = document.getElementById(submenuId);
-            if(submenu.style.display === 'none') {
-                submenu.style.display = 'block';
-            } else {
-                submenu.style.display = 'none';
-            }
+            // Find and highlight the clicked menu item
+            event.currentTarget.classList.add('active');
         }
     </script>
 </body>
