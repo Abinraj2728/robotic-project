@@ -22,32 +22,45 @@
             height: 100vh;
         }
 
-        /* Sidebar Styles */
+        /* Sidebar Styles with Gradient */
         .sidebar {
             width: 280px;
-            background: #2c3e50;
+            background: linear-gradient(180deg, #1a2634 0%, #2c3e50 100%);
             color: white;
             display: flex;
             flex-direction: column;
-            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            box-shadow: 4px 0 15px rgba(0,0,0,0.2);
         }
 
         .sidebar-header {
             padding: 2rem 1.5rem;
             border-bottom: 1px solid #34495e;
+            background: rgba(0,0,0,0.2);
         }
 
         .sidebar-header h2 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 0.3rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            animation: slideIn 0.5s ease;
         }
 
         .sidebar-header p {
             font-size: 0.9rem;
             opacity: 0.7;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
 
         .sidebar-menu {
@@ -64,8 +77,9 @@
             padding: 0.5rem 1.5rem;
             font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             opacity: 0.6;
+            color: #95a5a6;
         }
 
         .menu-item {
@@ -74,39 +88,56 @@
             align-items: center;
             gap: 1rem;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
             color: #ecf0f1;
             border-left: 4px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0;
+            background: rgba(230, 126, 34, 0.2);
+            transition: width 0.3s ease;
+            z-index: 0;
+        }
+
+        .menu-item:hover::before {
+            width: 100%;
         }
 
         .menu-item:hover {
             background: #34495e;
+            transform: translateX(5px);
         }
 
         .menu-item.active {
             background: #34495e;
             border-left-color: #e67e22;
+            box-shadow: inset 0 0 10px rgba(230, 126, 34, 0.3);
         }
 
         .menu-item i {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             width: 24px;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease;
         }
 
-        .folder-icon {
-            color: #f39c12;
-        }
-
-        .task-icon {
-            color: #3498db;
-        }
-
-        .project-icon {
-            color: #2ecc71;
+        .menu-item:hover i {
+            transform: scale(1.2);
         }
 
         .menu-item span {
             flex: 1;
+            position: relative;
+            z-index: 1;
         }
 
         .badge {
@@ -115,140 +146,251 @@
             font-size: 0.7rem;
             padding: 0.2rem 0.5rem;
             border-radius: 12px;
+            position: relative;
+            z-index: 1;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
         }
 
         /* Main Content Styles */
         .main-content {
             flex: 1;
-            background: #f5f6fa;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
             overflow-y: auto;
             padding: 2rem;
         }
 
         .content-header {
             margin-bottom: 2rem;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .content-header h1 {
-            font-size: 2.2rem;
-            color: #2c3e50;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #2c3e50 0%, #e67e22 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 0.5rem;
         }
 
         .content-header p {
             color: #7f8c8d;
+            font-size: 1.1rem;
         }
 
-        /* Card Grid for Content */
+        /* Card Grid with Animations */
         .content-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.8rem;
+            animation: fadeIn 0.6s ease;
         }
 
         .card {
             background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid #eee;
+            border-radius: 16px;
+            padding: 1.8rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255,255,255,0.8);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #e67e22, #f39c12, #e67e22);
+            background-size: 200% 100%;
+            animation: gradientMove 3s linear infinite;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 200% 0%;
+            }
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(230, 126, 34, 0.2);
         }
 
         .card-icon {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
         }
 
         .card h3 {
             color: #2c3e50;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
         }
 
         .card p {
             color: #7f8c8d;
             font-size: 0.95rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
         }
 
         .card-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 1rem;
+            margin-top: 1.2rem;
             padding-top: 1rem;
-            border-top: 1px solid #eee;
+            border-top: 2px solid #f0f0f0;
         }
 
         .card-date {
             font-size: 0.85rem;
             color: #95a5a6;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
         }
 
         .card-link {
             color: #e67e22;
             text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: gap 0.3s ease;
         }
 
         .card-link:hover {
-            text-decoration: underline;
+            gap: 0.8rem;
+            text-decoration: none;
+            color: #d35400;
         }
 
-        /* Projects and Tasks specific styles */
+        /* Folder View Styles */
         .folder-view {
             background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
+            border-radius: 16px;
+            padding: 2rem;
             margin-bottom: 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .folder-header {
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             padding-bottom: 1rem;
-            border-bottom: 2px solid #f0f0f0;
+            border-bottom: 3px solid #f0f0f0;
         }
 
         .folder-header h2 {
             color: #2c3e50;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #2c3e50, #e67e22);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .folder-header i {
-            font-size: 2rem;
+            font-size: 2.5rem;
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .list-item {
             display: flex;
             align-items: center;
-            padding: 1rem;
+            padding: 1.2rem;
             border-bottom: 1px solid #f0f0f0;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-radius: 8px;
         }
 
         .list-item:hover {
-            background: #f8f9fa;
+            background: linear-gradient(90deg, #f8f9fa, #ffffff);
+            transform: translateX(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .list-item-icon {
-            width: 40px;
-            height: 40px;
-            background: #f0f0f0;
-            border-radius: 8px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 1rem;
+            margin-right: 1.2rem;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .list-item:hover .list-item-icon {
+            transform: scale(1.1) rotate(5deg);
         }
 
         .list-item-content {
@@ -256,8 +398,10 @@
         }
 
         .list-item-title {
-            font-weight: 600;
+            font-weight: 700;
             color: #2c3e50;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
         }
 
         .list-item-subtitle {
@@ -266,72 +410,218 @@
         }
 
         .list-item-status {
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
+            padding: 0.4rem 1.2rem;
+            border-radius: 25px;
             font-size: 0.85rem;
-            font-weight: 500;
+            font-weight: 600;
+            animation: pulse 2s infinite;
         }
 
         .status-completed {
-            background: #d4edda;
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
             color: #155724;
-        }
-
-        .status-pending {
-            background: #fff3cd;
-            color: #856404;
+            border: 1px solid #28a745;
         }
 
         .status-progress {
-            background: #cce5ff;
+            background: linear-gradient(135deg, #cce5ff, #b8daff);
             color: #004085;
+            border: 1px solid #007bff;
+        }
+
+        .status-pending {
+            background: linear-gradient(135deg, #fff3cd, #ffe69c);
+            color: #856404;
+            border: 1px solid #ffc107;
+        }
+
+        /* Project Embed */
+        .project-embed {
+            margin: 2rem 0;
+            border: none;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .project-embed iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            display: block;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-left: 6px solid #e67e22;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            animation: slideInLeft 0.5s ease;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .info-box code {
+            background: #2c3e50;
+            color: #e67e22;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-size: 1rem;
+        }
+
+        /* Welcome Card */
+        .welcome-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #e67e22 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            }
+            50% {
+                box-shadow: 0 20px 40px rgba(230, 126, 34, 0.4);
+            }
+        }
+
+        .welcome-card h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(255,255,255,0.15);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .stat-item:hover {
+            transform: scale(1.05);
+            background: rgba(255,255,255,0.25);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
         }
 
         /* Hide/show content sections */
         .content-section {
             display: none;
+            animation: fadeIn 0.5s ease;
         }
 
         .content-section.active {
             display: block;
         }
 
-        /* Welcome section */
-        .welcome-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 12px;
-            margin-bottom: 2rem;
+        /* Empty Tasks Message */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            animation: fadeIn 0.5s ease;
         }
 
-        .welcome-card h2 {
+        .empty-state i {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        .empty-state h3 {
             font-size: 2rem;
+            color: #2c3e50;
             margin-bottom: 1rem;
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
+        .empty-state p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
         }
 
-        .stat-item {
-            text-align: center;
-            background: rgba(255,255,255,0.1);
-            padding: 1.5rem;
-            border-radius: 8px;
+        .empty-state button {
+            background: linear-gradient(135deg, #e67e22, #d35400);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
         }
 
-        .stat-number {
-            font-size: 2rem;
-            font-weight: bold;
+        .empty-state button:hover {
+            transform: scale(1.05);
         }
 
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.9;
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #e67e22, #d35400);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e67e22;
         }
     </style>
 </head>
@@ -352,6 +642,10 @@
                         <i>🏠</i>
                         <span>Home</span>
                     </div>
+                    <div class="menu-item" onclick="showSection('dashboard')">
+                        <i>📊</i>
+                        <span>Dashboard</span>
+                    </div>
                 </div>
 
                 <!-- Projects Folder -->
@@ -365,7 +659,12 @@
                     <div class="menu-item" onclick="showSection('tasks')">
                         <i class="task-icon">✓</i>
                         <span>Tasks</span>
-                        <span class="badge">5</span>
+                        <span class="badge">0</span>
+                    </div>
+                    <div class="menu-item" onclick="showSection('archive')">
+                        <i>📦</i>
+                        <span>Archive</span>
+                        <span class="badge">2</span>
                     </div>
                 </div>
 
@@ -379,6 +678,10 @@
                     <div class="menu-item" onclick="showSection('resources')">
                         <i>📚</i>
                         <span>Resources</span>
+                    </div>
+                    <div class="menu-item" onclick="showSection('gallery')">
+                        <i>🖼️</i>
+                        <span>Gallery</span>
                     </div>
                 </div>
             </div>
@@ -395,16 +698,16 @@
 
                 <div class="welcome-card">
                     <h2>Hello, Abinraj! 👋</h2>
-                    <p>You have 3 active projects and 5 pending tasks</p>
+                    <p>You have 3 active projects waiting for you</p>
                     
                     <div class="stats-grid">
                         <div class="stat-item">
                             <div class="stat-number">3</div>
-                            <div class="stat-label">Projects</div>
+                            <div class="stat-label">Active Projects</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number">5</div>
-                            <div class="stat-label">Tasks</div>
+                            <div class="stat-number">2</div>
+                            <div class="stat-label">Completed</div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-number">1</div>
@@ -413,35 +716,90 @@
                     </div>
                 </div>
 
-                <h2 style="margin: 2rem 0 1rem 0;">Recent Projects</h2>
+                <h2 style="margin: 2rem 0 1rem 0; color: #2c3e50;">🌟 Featured Projects</h2>
                 <div class="content-grid">
                     <div class="card">
                         <div class="card-icon">💡</div>
                         <h3>Smart Home IoT</h3>
-                        <p>Automatic light and fan control with motion and temperature sensors</p>
+                        <p>Automatic light and fan control with motion and temperature sensors. Complete IoT solution with real-time monitoring.</p>
                         <div class="card-footer">
-                            <span class="card-date">Updated: 25 Feb 2026</span>
-                            <a href="#" class="card-link" onclick="showSection('smart-home'); return false;">View →</a>
+                            <span class="card-date">📅 Updated: 25 Feb 2026</span>
+                            <span class="card-link" onclick="showSection('smart-home'); return false;">View Project →</span>
                         </div>
                     </div>
                     
                     <div class="card">
                         <div class="card-icon">🚗</div>
                         <h3>Line Follower Robot</h3>
-                        <p>Arduino-based robot that follows black line (Coming soon)</p>
+                        <p>Arduino-based robot that follows black line using IR sensors. Features PID control for smooth movement.</p>
                         <div class="card-footer">
-                            <span class="card-date">In Progress</span>
-                            <span class="card-link">Soon</span>
+                            <span class="card-date">⚡ In Progress</span>
+                            <span class="card-link">Coming Soon</span>
                         </div>
                     </div>
                     
                     <div class="card">
                         <div class="card-icon">🦾</div>
                         <h3>Robotic Arm</h3>
-                        <p>Servo-controlled robotic arm (Coming soon)</p>
+                        <p>6-DOF robotic arm controlled by servo motors. Programmable for pick and place operations.</p>
                         <div class="card-footer">
-                            <span class="card-date">Planned</span>
-                            <span class="card-link">Soon</span>
+                            <span class="card-date">📝 Planned</span>
+                            <span class="card-link">Coming Soon</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">📡</div>
+                        <h3>Bluetooth RC Car</h3>
+                        <p>Mobile-controlled car using HC-05 Bluetooth module and Arduino. Control via smartphone app.</p>
+                        <div class="card-footer">
+                            <span class="card-date">✅ Completed</span>
+                            <span class="card-link">View Project →</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Section (NEW) -->
+            <div id="dashboard" class="content-section">
+                <div class="content-header">
+                    <h1>📊 Project Dashboard</h1>
+                    <p>Analytics and statistics of your robotics projects</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 2rem;">
+                    <div class="card" style="text-align: center;">
+                        <div style="font-size: 2.5rem; color: #e67e22;">3</div>
+                        <div style="color: #7f8c8d;">Total Projects</div>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <div style="font-size: 2.5rem; color: #27ae60;">2</div>
+                        <div style="color: #7f8c8d;">Completed</div>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <div style="font-size: 2.5rem; color: #3498db;">1</div>
+                        <div style="color: #7f8c8d;">In Progress</div>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <div style="font-size: 2.5rem; color: #f39c12;">150+</div>
+                        <div style="color: #7f8c8d;">Hours Spent</div>
+                    </div>
+                </div>
+
+                <div class="folder-view">
+                    <h3 style="margin-bottom: 1rem;">📈 Recent Activity</h3>
+                    <div class="list-item">
+                        <div class="list-item-icon">💡</div>
+                        <div class="list-item-content">
+                            <div class="list-item-title">Smart Home IoT - Updated</div>
+                            <div class="list-item-subtitle">2 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-item-icon">🚗</div>
+                        <div class="list-item-content">
+                            <div class="list-item-title">Line Follower - Progress 60%</div>
+                            <div class="list-item-subtitle">Yesterday</div>
                         </div>
                     </div>
                 </div>
@@ -451,8 +809,8 @@
             <div id="projects" class="content-section">
                 <div class="folder-view">
                     <div class="folder-header">
-                        <i style="font-size: 2rem;">📁</i>
-                        <h2>Projects Folder</h2>
+                        <i>📁</i>
+                        <h2>My Projects</h2>
                     </div>
 
                     <div class="list-item" onclick="showSection('smart-home')" style="cursor: pointer;">
@@ -468,7 +826,7 @@
                         <div class="list-item-icon">🚗</div>
                         <div class="list-item-content">
                             <div class="list-item-title">Line Follower Robot</div>
-                            <div class="list-item-subtitle">In development</div>
+                            <div class="list-item-subtitle">60% complete - Using IR sensors</div>
                         </div>
                         <div class="list-item-status status-progress">In Progress</div>
                     </div>
@@ -477,64 +835,54 @@
                         <div class="list-item-icon">🦾</div>
                         <div class="list-item-content">
                             <div class="list-item-title">Robotic Arm</div>
-                            <div class="list-item-subtitle">Planning phase</div>
+                            <div class="list-item-subtitle">Planning phase - 6 DOF design</div>
                         </div>
                         <div class="list-item-status status-pending">Planned</div>
+                    </div>
+
+                    <div class="list-item">
+                        <div class="list-item-icon">📡</div>
+                        <div class="list-item-content">
+                            <div class="list-item-title">Bluetooth RC Car</div>
+                            <div class="list-item-subtitle">Completed - HC-05 module</div>
+                        </div>
+                        <div class="list-item-status status-completed">Completed</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Tasks Section -->
+            <!-- Tasks Section (EMPTY - You can add later) -->
             <div id="tasks" class="content-section">
+                <div class="empty-state">
+                    <i>📋</i>
+                    <h3>No Tasks Yet</h3>
+                    <p>Your tasks folder is empty. You can add tasks here later!</p>
+                    <button onclick="alert('You can add tasks here later!')">+ Add Your First Task</button>
+                </div>
+            </div>
+
+            <!-- Archive Section (NEW) -->
+            <div id="archive" class="content-section">
                 <div class="folder-view">
                     <div class="folder-header">
-                        <i style="font-size: 2rem;">✓</i>
-                        <h2>Tasks Folder</h2>
+                        <i>📦</i>
+                        <h2>Archive</h2>
                     </div>
 
                     <div class="list-item">
-                        <div class="list-item-icon">📝</div>
+                        <div class="list-item-icon">📡</div>
                         <div class="list-item-content">
-                            <div class="list-item-title">Complete project documentation</div>
-                            <div class="list-item-subtitle">Due: 28 Feb 2026</div>
+                            <div class="list-item-title">Bluetooth RC Car v1.0</div>
+                            <div class="list-item-subtitle">Archived - Jan 2026</div>
                         </div>
-                        <div class="list-item-status status-progress">In Progress</div>
                     </div>
 
                     <div class="list-item">
-                        <div class="list-item-icon">🎮</div>
+                        <div class="list-item-icon">💡</div>
                         <div class="list-item-content">
-                            <div class="list-item-title">Test all sensors in simulation</div>
-                            <div class="list-item-subtitle">Completed: 24 Feb 2026</div>
+                            <div class="list-item-title">Smart Home IoT - Prototype</div>
+                            <div class="list-item-subtitle">Archived - Feb 2026</div>
                         </div>
-                        <div class="list-item-status status-completed">Completed</div>
-                    </div>
-
-                    <div class="list-item">
-                        <div class="list-item-icon">🔧</div>
-                        <div class="list-item-content">
-                            <div class="list-item-title">Calibrate temperature threshold</div>
-                            <div class="list-item-subtitle">Completed: 23 Feb 2026</div>
-                        </div>
-                        <div class="list-item-status status-completed">Completed</div>
-                    </div>
-
-                    <div class="list-item">
-                        <div class="list-item-icon">📊</div>
-                        <div class="list-item-content">
-                            <div class="list-item-title">Prepare project presentation</div>
-                            <div class="list-item-subtitle">Due: 01 March 2026</div>
-                        </div>
-                        <div class="list-item-status status-pending">Pending</div>
-                    </div>
-
-                    <div class="list-item">
-                        <div class="list-item-icon">📹</div>
-                        <div class="list-item-content">
-                            <div class="list-item-title">Record demo video</div>
-                            <div class="list-item-subtitle">Due: 02 March 2026</div>
-                        </div>
-                        <div class="list-item-status status-pending">Pending</div>
                     </div>
                 </div>
             </div>
@@ -543,25 +891,56 @@
             <div id="smart-home" class="content-section">
                 <div class="content-header">
                     <h1>💡 Smart Home IoT Project</h1>
-                    <p>Automatic light and fan control system</p>
+                    <p>Automatic light and fan control system with motion and temperature sensors</p>
                 </div>
 
-                <div class="project-embed" style="margin: 2rem 0; border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
-                    <iframe src="https://wokwi.com/projects/456707908718215169/embed" width="100%" height="500px" style="border: none;"></iframe>
+                <div class="project-embed">
+                    <iframe src="https://wokwi.com/projects/456707908718215169/embed" allowfullscreen></iframe>
                 </div>
 
-                <div class="info-box" style="background: #f8f9fa; border-left: 4px solid #e67e22; padding: 1rem; margin: 1rem 0;">
-                    <strong>📱 Serial Commands:</strong> Type '1' (Lamp ON), '0' (Lamp OFF), 'A' (AUTO Mode)
+                <div class="info-box">
+                    <strong>📱 Serial Commands:</strong>
+                    <code>'1' - Lamp ON | '0' - Lamp OFF | 'A' - AUTO Mode</code>
                 </div>
 
-                <div class="card-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem;">
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem;">
                     <div class="card">
                         <h3>🔧 Components</h3>
-                        <p>Arduino, DHT22, PIR Sensor, 2x Relays</p>
+                        <p>• Arduino Uno<br>• DHT22 Sensor<br>• PIR Sensor<br>• 2x Relay Modules</p>
                     </div>
                     <div class="card">
                         <h3>⚙️ Features</h3>
-                        <p>Auto light (motion), Auto fan (temp >30°C)</p>
+                        <p>• Auto Light (Motion)<br>• Auto Fan (>30°C)<br>• Manual Override<br>• Serial Control</p>
+                    </div>
+                    <div class="card">
+                        <h3>📊 Status</h3>
+                        <p>• ✅ Working<br>• ✅ Tested<br>• ✅ Documented<br>• 📅 Feb 2026</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Section (NEW) -->
+            <div id="gallery" class="content-section">
+                <div class="content-header">
+                    <h1>🖼️ Project Gallery</h1>
+                    <p>Images and screenshots of your robotics projects</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
+                    <div class="card" style="padding: 1rem; text-align: center;">
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">💡</div>
+                        <h3>Smart Home IoT</h3>
+                        <p>Circuit diagram and simulation</p>
+                    </div>
+                    <div class="card" style="padding: 1rem; text-align: center;">
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">🚗</div>
+                        <h3>Line Follower</h3>
+                        <p>Prototype design</p>
+                    </div>
+                    <div class="card" style="padding: 1rem; text-align: center;">
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">🦾</div>
+                        <h3>Robotic Arm</h3>
+                        <p>3D model</p>
                     </div>
                 </div>
             </div>
@@ -570,36 +949,50 @@
             <div id="resources" class="content-section">
                 <div class="content-header">
                     <h1>📚 Resources</h1>
-                    <p>Useful links and documentation</p>
+                    <p>Useful links and documentation for robotics</p>
                 </div>
 
                 <div class="content-grid">
                     <div class="card">
                         <div class="card-icon">📄</div>
                         <h3>Arduino Reference</h3>
-                        <p>Official Arduino documentation</p>
+                        <p>Official Arduino documentation and tutorials</p>
                         <a href="https://www.arduino.cc/reference/en/" target="_blank" class="card-link">Visit →</a>
                     </div>
                     
                     <div class="card">
                         <div class="card-icon">🔌</div>
                         <h3>DHT22 Datasheet</h3>
-                        <p>Temperature sensor specifications</p>
+                        <p>Temperature sensor specifications and guide</p>
                         <a href="https://components101.com/sensors/dht22-pinout-specs-datasheet" target="_blank" class="card-link">Visit →</a>
                     </div>
                     
                     <div class="card">
                         <div class="card-icon">📡</div>
                         <h3>PIR Sensor Guide</h3>
-                        <p>Motion sensor tutorial</p>
+                        <p>Motion sensor tutorial and projects</p>
                         <a href="https://components101.com/sensors/hc-sr501-pir-sensor" target="_blank" class="card-link">Visit →</a>
                     </div>
                     
                     <div class="card">
                         <div class="card-icon">🎮</div>
                         <h3>Wokwi Docs</h3>
-                        <p>Simulation platform help</p>
+                        <p>Simulation platform help and examples</p>
                         <a href="https://docs.wokwi.com/" target="_blank" class="card-link">Visit →</a>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">📺</div>
+                        <h3>YouTube Tutorials</h3>
+                        <p>Robotics project video guides</p>
+                        <a href="#" class="card-link">Coming Soon</a>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">📱</div>
+                        <h3>Arduino Forum</h3>
+                        <p>Community help and discussions</p>
+                        <a href="https://forum.arduino.cc/" target="_blank" class="card-link">Visit →</a>
                     </div>
                 </div>
             </div>
@@ -624,7 +1017,9 @@
             }
             
             // Find and highlight the clicked menu item
-            event.currentTarget.classList.add('active');
+            if(event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            }
         }
     </script>
 </body>
