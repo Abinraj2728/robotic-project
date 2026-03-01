@@ -267,6 +267,15 @@
             border-radius: 25px;
             font-size: 0.85rem;
             font-weight: 600;
+        }
+
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffc107;
+        }
+
+        .status-progress {
             background: #cce5ff;
             color: #004085;
             border: 1px solid #007bff;
@@ -373,17 +382,22 @@
                     </div>
                 </div>
 
-                <!-- TASKS FOLDER - Only Parking Assistant -->
+                <!-- TASKS FOLDER - Two Tasks Now -->
                 <div class="menu-section">
                     <div class="menu-section-title">TASKS</div>
                     <div class="menu-item" onclick="showSection('parking-task')">
                         <i>🚗</i>
-                        <span>Parking Assistant</span>
+                        <span>Task 1: Parking Assistant</span>
                         <span class="badge">1</span>
+                    </div>
+                    <div class="menu-item" onclick="showSection('circadian-task')">
+                        <i>🌓</i>
+                        <span>Task 2: Circadian Lighting</span>
+                        <span class="badge">2</span>
                     </div>
                 </div>
 
-                <!-- NO QUICK LINKS SECTION AT ALL -->
+                <!-- NO QUICK LINKS SECTION -->
             </div>
         </div>
 
@@ -402,8 +416,8 @@
                         <div class="stat-label">Project</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-number">1</div>
-                        <div class="stat-label">Task</div>
+                        <div class="stat-number">2</div>
+                        <div class="stat-label">Tasks</div>
                     </div>
                 </div>
 
@@ -416,8 +430,14 @@
                     </div>
                     
                     <div class="card" onclick="showSection('parking-task')" style="cursor: pointer;">
-                        <h3>🚗 Parking Assistant</h3>
-                        <p>Vehicle parking assistance system with ultrasonic sensor and LED indicators</p>
+                        <h3>🚗 Task 1: Parking Assistant</h3>
+                        <p>Vehicle parking assistance with ultrasonic sensor and LED indicators</p>
+                        <div style="margin-top: 1rem; color: #e67e22;">Click to open task →</div>
+                    </div>
+
+                    <div class="card" onclick="showSection('circadian-task')" style="cursor: pointer;">
+                        <h3>🌓 Task 2: Circadian Lighting</h3>
+                        <p>Smart lighting that adjusts color temperature throughout the day</p>
                         <div style="margin-top: 1rem; color: #e67e22;">Click to open task →</div>
                     </div>
                 </div>
@@ -461,14 +481,13 @@
                 </div>
             </div>
 
-            <!-- Parking Assistant Task (Inside Tasks Folder) -->
+            <!-- Task 1: Parking Assistant -->
             <div id="parking-task" class="content-section">
                 <div class="content-header">
-                    <h1>🚗 Vehicle Parking Assistance System</h1>
-                    <p>Task: Basic Output Control with Ultrasonic Sensor</p>
+                    <h1>🚗 Task 1: Vehicle Parking Assistance System</h1>
+                    <p>Basic Output Control with Ultrasonic Sensor</p>
                 </div>
 
-                <!-- Wokwi Simulation -->
                 <div class="project-embed">
                     <iframe src="https://wokwi.com/projects/457331644143924225/embed" allowfullscreen></iframe>
                 </div>
@@ -478,7 +497,6 @@
                     <code>Green LED (>30cm) | Yellow LED (15-30cm) | Red LED (<10cm)</code>
                 </div>
 
-                <!-- Task Details -->
                 <div class="task-list">
                     <div class="task-item" style="cursor: default;">
                         <div class="task-icon">🚗</div>
@@ -486,11 +504,10 @@
                             <div class="task-title">Vehicle Parking Assistance System</div>
                             <div class="task-subtitle">Task 1: Ultrasonic sensor with 3 LED indicators</div>
                         </div>
-                        <div class="task-status">In Progress</div>
+                        <div class="task-status status-progress">In Progress</div>
                     </div>
                 </div>
 
-                <!-- Project Details -->
                 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem;">
                     <div class="card">
                         <h3>🔧 Components</h3>
@@ -521,15 +538,73 @@
                         </ul>
                     </div>
                 </div>
+            </div>
+
+            <!-- Task 2: Circadian Lighting System (NEW) -->
+            <div id="circadian-task" class="content-section">
+                <div class="content-header">
+                    <h1>🌓 Task 2: Smart Circadian Lighting System</h1>
+                    <p>Variable Control System - Color temperature changes throughout the day</p>
+                </div>
+
+                <div class="project-embed">
+                    <iframe src="https://wokwi.com/projects/457332967172193281/embed" allowfullscreen></iframe>
+                </div>
+
+                <div class="info-box">
+                    <strong>🎨 Color Cycle (60-second simulated day):</strong>
+                    <code>Sunrise → Morning → Noon → Afternoon → Sunset → Evening → Night</code>
+                </div>
+
+                <div class="task-list">
+                    <div class="task-item" style="cursor: default;">
+                        <div class="task-icon">🌓</div>
+                        <div class="task-content">
+                            <div class="task-title">Smart Circadian Lighting System</div>
+                            <div class="task-subtitle">Task 2: RGB LED with color temperature control</div>
+                        </div>
+                        <div class="task-status status-progress">In Progress</div>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem;">
+                    <div class="card">
+                        <h3>🔧 Components</h3>
+                        <ul>
+                            <li>• Arduino Uno</li>
+                            <li>• RGB LED (Common Cathode)</li>
+                            <li>• LDR (Photoresistor)</li>
+                            <li>• 3x 220Ω Resistors</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>🎨 Color Temperatures</h3>
+                        <ul>
+                            <li>• 🌅 Sunrise: Warm orange</li>
+                            <li>• ☀️ Noon: Bright daylight</li>
+                            <li>• 🌇 Sunset: Deep orange</li>
+                            <li>• 🌙 Night: Dim red</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>⚙️ Pin Connections</h3>
+                        <ul>
+                            <li>• Red LED → Pin 9 (PWM)</li>
+                            <li>• Green LED → Pin 10 (PWM)</li>
+                            <li>• Blue LED → Pin 11 (PWM)</li>
+                            <li>• LDR → A0</li>
+                        </ul>
+                    </div>
+                </div>
 
                 <div style="margin-top: 2rem;">
                     <div class="card">
-                        <h3>📋 Task Progress</h3>
+                        <h3>📋 How It Works</h3>
                         <ul>
-                            <li>• ✅ Ultrasonic sensor connected</li>
-                            <li>• ✅ LEDs configured</li>
-                            <li>• ✅ Distance thresholds set</li>
-                            <li>• ⏳ Testing in progress</li>
+                            <li>• Simulates a full day in 60 seconds</li>
+                            <li>• Smooth transitions between colors</li>
+                            <li>• LDR detects ambient light for compensation</li>
+                            <li>• Supports natural sleep-wake cycles</li>
                         </ul>
                     </div>
                 </div>
