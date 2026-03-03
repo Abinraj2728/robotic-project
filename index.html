@@ -281,6 +281,12 @@
             border: 1px solid #007bff;
         }
 
+        .status-completed {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #28a745;
+        }
+
         /* Welcome Card */
         .welcome-card {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #e67e22 100%);
@@ -382,7 +388,7 @@
                     </div>
                 </div>
 
-                <!-- TASKS FOLDER - Two Tasks -->
+                <!-- TASKS FOLDER - Three Tasks Now -->
                 <div class="menu-section">
                     <div class="menu-section-title">TASKS</div>
                     <div class="menu-item" onclick="showSection('parking-task')">
@@ -395,15 +401,20 @@
                         <span>Task 2: Circadian Lighting</span>
                         <span class="badge">2</span>
                     </div>
+                    <div class="menu-item" onclick="showSection('led-task')">
+                        <i>💡</i>
+                        <span>Task 3: Interactive LED Control</span>
+                        <span class="badge">3</span>
+                    </div>
                 </div>
 
-                <!-- NO QUICK LINKS - REMOVED COMPLETELY -->
+                <!-- NO QUICK LINKS -->
             </div>
         </div>
 
         <!-- Main Content Area -->
         <div class="main-content">
-            <!-- Home Section - NO QUICK ACCESS CARDS -->
+            <!-- Home Section -->
             <div id="home" class="content-section active">
                 <div class="welcome-card">
                     <h2>Welcome to Robotics Lab! 👋</h2>
@@ -416,12 +427,11 @@
                         <div class="stat-label">Project</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-number">2</div>
+                        <div class="stat-number">3</div>
                         <div class="stat-label">Tasks</div>
                     </div>
                 </div>
 
-                <!-- QUICK ACCESS CARDS REMOVED - ONLY STATS REMAIN -->
                 <h2 style="color: #2c3e50; margin: 2rem 0 1rem 0; text-align: center;">Use Sidebar to Navigate</h2>
                 <p style="text-align: center; color: #7f8c8d;">Click on Projects or Tasks in the sidebar</p>
             </div>
@@ -588,6 +598,76 @@
                             <li>• Smooth transitions between colors</li>
                             <li>• LDR detects ambient light for compensation</li>
                             <li>• Supports natural sleep-wake cycles</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task 3: Interactive LED Control System (NEW) -->
+            <div id="led-task" class="content-section">
+                <div class="content-header">
+                    <h1>💡 Task 3: Interactive LED Control System</h1>
+                    <p>Multiple LED control with interactive components</p>
+                </div>
+
+                <div class="project-embed">
+                    <iframe src="https://wokwi.com/projects/456699805254152193/embed" allowfullscreen></iframe>
+                </div>
+
+                <div class="info-box">
+                    <strong>🎮 Interactive Features:</strong>
+                    <code>Multiple LEDs with sensor-based control</code>
+                </div>
+
+                <div class="task-list">
+                    <div class="task-item" style="cursor: default;">
+                        <div class="task-icon">💡</div>
+                        <div class="task-content">
+                            <div class="task-title">Interactive LED Control System</div>
+                            <div class="task-subtitle">Task 3: ESP32-based LED control with sensors</div>
+                        </div>
+                        <div class="task-status status-pending">Pending</div>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem;">
+                    <div class="card">
+                        <h3>🔧 Components</h3>
+                        <ul>
+                            <li>• ESP32</li>
+                            <li>• Multiple LEDs</li>
+                            <li>• Resistors</li>
+                            <li>• Sensors (DHT/PIR)</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>🎮 Features</h3>
+                        <ul>
+                            <li>• Interactive control</li>
+                            <li>• Sensor integration</li>
+                            <li>• Multiple LED outputs</li>
+                            <li>• Real-time response</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>⚙️ Pin Connections</h3>
+                        <ul>
+                            <li>• LED 1 → GPIO Pin</li>
+                            <li>• LED 2 → GPIO Pin</li>
+                            <li>• LED 3 → GPIO Pin</li>
+                            <li>• Sensors → Various Pins</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <div class="card">
+                        <h3>📋 Description</h3>
+                        <ul>
+                            <li>• Interactive LED control system</li>
+                            <li>• Built on ESP32 platform</li>
+                            <li>• Integrates with sensors</li>
+                            <li>• Multiple LED outputs for various indications</li>
                         </ul>
                     </div>
                 </div>
