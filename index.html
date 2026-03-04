@@ -42,12 +42,6 @@
             color: #e67e22;
         }
 
-        body.dark-mode .content-header p,
-        body.dark-mode .task-subtitle,
-        body.dark-mode .stat-label {
-            color: #aaa;
-        }
-
         .container {
             display: flex;
             height: 100vh;
@@ -207,7 +201,7 @@
             transition: background 0.3s ease;
         }
 
-        /* Theme Toggle Button */
+        /* Theme Toggle Button - Creative */
         .theme-toggle {
             position: fixed;
             top: 20px;
@@ -274,7 +268,7 @@
             font-size: 1.1rem;
         }
 
-        /* Project Embed with 3D effect */
+        /* Project Embed with 3D effect - Creative */
         .project-embed {
             margin: 2rem 0;
             border: none;
@@ -303,7 +297,7 @@
             display: block;
         }
 
-        /* Info Box with gradient animation */
+        /* Info Box with gradient animation - Creative */
         .info-box {
             background: linear-gradient(135deg, #f8f9fa, #e9ecef);
             border-left: 6px solid #e67e22;
@@ -332,7 +326,7 @@
             animation: pulse 2s infinite;
         }
 
-        /* Card Grid with hover effects */
+        /* Card Grid with hover effects - Creative */
         .content-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -355,7 +349,6 @@
 
         .card:nth-child(1) { animation-delay: 0.1s; }
         .card:nth-child(2) { animation-delay: 0.2s; }
-        .card:nth-child(3) { animation-delay: 0.3s; }
 
         @keyframes fadeInUp {
             from {
@@ -411,7 +404,7 @@
             gap: 0.5rem;
         }
 
-        /* Task List with animated items */
+        /* Task List with animated items - Creative */
         .task-list {
             background: white;
             border-radius: 16px;
@@ -507,7 +500,7 @@
             border: 1px solid #28a745;
         }
 
-        /* Welcome Card with 3D effect */
+        /* Welcome Card with 3D effect - Creative */
         .welcome-card {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #e67e22 100%);
             color: white;
@@ -544,7 +537,7 @@
             opacity: 0.9;
         }
 
-        /* Stats Grid with animated numbers */
+        /* Stats Grid with animated numbers - Creative */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -594,7 +587,7 @@
             font-size: 1rem;
         }
 
-        /* Progress Bar for Tasks */
+        /* Progress Bar for Tasks - Creative */
         .progress-bar {
             width: 100%;
             height: 8px;
@@ -616,10 +609,10 @@
             to { width: 75%; }
         }
 
-        /* 3D Robot Model Container */
+        /* 3D Robot Model Container - Creative (NO new project) */
         .robot-3d {
             width: 100%;
-            height: 200px;
+            height: 150px;
             background: linear-gradient(135deg, #2c3e50, #1a2634);
             border-radius: 16px;
             margin: 2rem 0;
@@ -627,7 +620,8 @@
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 4rem;
+            font-size: 3rem;
+            gap: 1rem;
             animation: robotFloat 3s ease-in-out infinite;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
@@ -637,7 +631,7 @@
             50% { transform: translateY(-10px) rotate(2deg); }
         }
 
-        /* Code Snippet Viewer */
+        /* Code Snippet Viewer - Creative */
         .code-snippet {
             background: #1e1e1e;
             color: #d4d4d4;
@@ -650,7 +644,7 @@
         }
 
         .code-snippet::before {
-            content: 'Arduino';
+            content: '📋 Code';
             position: absolute;
             top: 5px;
             right: 10px;
@@ -665,7 +659,7 @@
             animation: slideIn 0.5s ease;
         }
 
-        /* Timeline */
+        /* Timeline - Creative */
         .timeline {
             position: relative;
             padding: 2rem 0;
@@ -734,36 +728,7 @@
             font-size: 0.9rem;
         }
 
-        /* Hide/show sections */
-        .content-section {
-            display: none;
-        }
-
-        .content-section.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #e67e22, #d35400);
-            border-radius: 4px;
-        }
-
-        /* Floating Particles Background */
+        /* Floating Particles Background - Creative */
         .particles {
             position: fixed;
             top: 0;
@@ -797,13 +762,42 @@
             }
         }
 
+        /* Hide/show sections */
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #e67e22, #d35400);
+            border-radius: 4px;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .sidebar {
                 width: 80px;
             }
             
-            .sidebar-header h2 span,
+            .sidebar-header h2 span:not(:first-child),
             .sidebar-header p,
             .menu-item span,
             .badge {
@@ -822,14 +816,14 @@
     </style>
 </head>
 <body>
-    <!-- Floating Particles Background -->
+    <!-- Floating Particles Background - Creative -->
     <div class="particles" id="particles"></div>
 
-    <!-- Theme Toggle Button -->
+    <!-- Theme Toggle Button - Creative -->
     <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle">🌓</button>
 
     <div class="container">
-        <!-- Sidebar -->
+        <!-- Sidebar - EXACT same as before -->
         <div class="sidebar">
             <div class="sidebar-header">
                 <h2>
@@ -858,7 +852,7 @@
                     </div>
                 </div>
 
-                <!-- TASKS FOLDER - Three Tasks -->
+                <!-- TASKS FOLDER - Three Tasks ONLY -->
                 <div class="menu-section">
                     <div class="menu-section-title">TASKS</div>
                     <div class="menu-item" onclick="showSection('parking-task')">
@@ -884,50 +878,59 @@
 
         <!-- Main Content Area -->
         <div class="main-content">
-            <!-- Home Section with Creative Elements -->
+            <!-- Home Section with Creative Elements (NO new projects/tasks) -->
             <div id="home" class="content-section active">
                 <div class="welcome-card">
                     <h2>Welcome to Robotics Lab! 👋</h2>
                     <p>Abinraj2728's creative robotics workspace</p>
                 </div>
 
-                <!-- 3D Robot Model (CSS only) -->
+                <!-- Creative 3D Robot Animation (NO project added) -->
                 <div class="robot-3d">
-                    🤖 🔧 ⚡
+                    <span>🤖</span>
+                    <span>🔧</span>
+                    <span>⚡</span>
+                    <span>💡</span>
                 </div>
 
+                <!-- Stats - Your EXACT stats -->
                 <div class="stats-grid">
                     <div class="stat-card" onclick="showSection('smart-home')">
-                        <div class="stat-number" data-target="1">1</div>
+                        <div class="stat-number">1</div>
                         <div class="stat-label">Project</div>
                     </div>
                     <div class="stat-card" onclick="showSection('parking-task')">
-                        <div class="stat-number" data-target="3">3</div>
+                        <div class="stat-number">3</div>
                         <div class="stat-label">Tasks</div>
                     </div>
                 </div>
 
-                <!-- Project Timeline -->
+                <!-- Creative Timeline (shows your EXACT projects) -->
                 <h2 style="color: #2c3e50; margin: 2rem 0 1rem 0;">📅 Project Timeline</h2>
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-date">February 2026</div>
-                        <div class="timeline-title">Smart Home IoT Project</div>
-                        <div class="timeline-description">Completed automatic light and fan control system</div>
+                        <div class="timeline-title">Smart Home IoT</div>
+                        <div class="timeline-description">Completed - Light and fan control system</div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-date">March 2026</div>
-                        <div class="timeline-title">Parking Assistant Task 1</div>
+                        <div class="timeline-title">Task 1: Parking Assistant</div>
                         <div class="timeline-description">Ultrasonic sensor with LED indicators</div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-date">March 2026</div>
-                        <div class="timeline-title">Circadian Lighting Task 2</div>
+                        <div class="timeline-title">Task 2: Circadian Lighting</div>
                         <div class="timeline-description">RGB LED color temperature control</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">March 2026</div>
+                        <div class="timeline-title">Task 3: Interactive LED</div>
+                        <div class="timeline-description">ESP32-based LED control system</div>
                     </div>
                 </div>
 
-                <!-- Code Snippet of the Day -->
+                <!-- Creative Code Snippet (from your project) -->
                 <h2 style="color: #2c3e50; margin: 2rem 0 1rem 0;">💻 Code Snippet</h2>
                 <div class="code-snippet">
                     <pre>
@@ -949,14 +952,14 @@ void loop() {
                 <h2 style="color: #2c3e50; margin: 2rem 0 1rem 0; text-align: center;">👇 Click Sidebar to Explore Tasks</h2>
             </div>
 
-            <!-- Smart Home IoT Project -->
+            <!-- Smart Home IoT Project - Your EXACT project with creative additions -->
             <div id="smart-home" class="content-section">
                 <div class="content-header">
                     <h1>💡 Smart Home IoT</h1>
                     <p>Automatic light and fan control system</p>
                 </div>
 
-                <!-- Progress Bar -->
+                <!-- Creative Progress Bar -->
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: 100%;"></div>
                 </div>
@@ -993,14 +996,14 @@ void loop() {
                 </div>
             </div>
 
-            <!-- Task 1: Parking Assistant -->
+            <!-- Task 1: Parking Assistant - Your EXACT task with creative additions -->
             <div id="parking-task" class="content-section">
                 <div class="content-header">
                     <h1>🚗 Task 1: Vehicle Parking Assistance System</h1>
                     <p>Basic Output Control with Ultrasonic Sensor</p>
                 </div>
 
-                <!-- Progress Bar -->
+                <!-- Creative Progress Bar -->
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: 75%;"></div>
                 </div>
@@ -1058,7 +1061,13 @@ void loop() {
                 </div>
             </div>
 
-            <!-- Task 2: Circadian Lighting System -->
+            <!-- Task 2: Circadian Lighting - Your EXACT task with creative additions -->
             <div id="circadian-task" class="content-section">
                 <div class="content-header">
-                    <h1>
+                    <h1>🌓 Task 2: Smart Circadian Lighting System</h1>
+                    <p>Variable Control System - Color temperature changes throughout the day</p>
+                </div>
+
+                <!-- Creative Progress Bar -->
+                <div class="progress-bar">
+                    <div class="progress-f
