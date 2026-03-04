@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robotics Lab - Abinraj2728 | Professional Portfolio</title>
+    <title>Robotics Lab - Abinraj2728</title>
     <style>
         * {
             margin: 0;
@@ -12,7 +12,7 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             height: 100vh;
             overflow: hidden;
             background: #0a0f1e;
@@ -262,7 +262,7 @@
             font-size: 0.9rem;
         }
 
-        /* Project Embed - EXACT same working embed */
+        /* Project Embed - WORKING */
         .project-embed {
             margin: 2rem 0;
             border: 2px solid var(--glass-border);
@@ -368,13 +368,6 @@
             padding: 1.2rem;
             border-bottom: 1px solid var(--glass-border);
             transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .task-item:hover {
-            background: rgba(255,255,255,0.05);
-            transform: translateX(10px);
-            border-radius: 8px;
         }
 
         .task-icon {
@@ -463,119 +456,6 @@
             border-radius: 4px;
         }
 
-        /* 3D Robot Model - Decorative Only */
-        .robot-model {
-            width: 100%;
-            height: 150px;
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            margin: 2rem 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
-            color: white;
-            font-size: 3rem;
-        }
-
-        .robot-model span {
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .robot-model span:nth-child(2) { animation-delay: 0.2s; }
-        .robot-model span:nth-child(3) { animation-delay: 0.4s; }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding: 2rem 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 20px;
-            top: 0;
-            height: 100%;
-            width: 2px;
-            background: var(--gradient-1);
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-left: 60px;
-            margin-bottom: 2rem;
-            cursor: pointer;
-        }
-
-        .timeline-item:hover .timeline-title {
-            color: var(--primary);
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 12px;
-            top: 0;
-            width: 16px;
-            height: 16px;
-            background: var(--gradient-2);
-            border-radius: 50%;
-        }
-
-        .timeline-date {
-            font-size: 0.9rem;
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-        }
-
-        .timeline-title {
-            color: white;
-            font-size: 1.2rem;
-            margin-bottom: 0.3rem;
-            transition: color 0.3s ease;
-        }
-
-        .timeline-description {
-            color: var(--light);
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        /* Code Snippet */
-        .code-snippet {
-            background: #1a1f30;
-            border-radius: 16px;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border: 1px solid var(--glass-border);
-            color: #d4d4d4;
-            font-family: 'Courier New', monospace;
-            position: relative;
-        }
-
-        .code-snippet::before {
-            content: 'Core System';
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            color: var(--primary);
-            font-size: 0.8rem;
-            opacity: 0.5;
-        }
-
-        .code-snippet pre {
-            margin: 0;
-            white-space: pre-wrap;
-        }
-
         /* Hide/show sections */
         .content-section {
             display: none;
@@ -603,21 +483,6 @@
         ::-webkit-scrollbar-thumb {
             background: var(--gradient-1);
             border-radius: 5px;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 80px;
-            }
-            
-            .sidebar-header h2 span:not(:first-child),
-            .sidebar-header p,
-            .status-indicator,
-            .menu-item span,
-            .badge {
-                display: none;
-            }
         }
     </style>
 </head>
@@ -678,7 +543,7 @@
             </div>
         </div>
 
-        <!-- Main Content Area - ALL WORKING LINKS PRESERVED -->
+        <!-- Main Content Area -->
         <div class="main-content">
             <!-- Home Section -->
             <div id="home" class="content-section active">
@@ -687,14 +552,7 @@
                     <p>Your professional robotics workspace</p>
                 </div>
 
-                <!-- Decorative Robot (no functionality) -->
-                <div class="robot-model">
-                    <span>🤖</span>
-                    <span>⚡</span>
-                    <span>🔧</span>
-                </div>
-
-                <!-- Working Stats - Clickable -->
+                <!-- Stats - Clickable -->
                 <div class="stats-grid">
                     <div class="stat-card" onclick="showSection('smart-home')">
                         <div class="stat-number">1</div>
@@ -706,44 +564,32 @@
                     </div>
                 </div>
 
-                <!-- Timeline - Clickable -->
-                <h2 style="color: white; margin: 2rem 0 1rem 0;">📅 Project Timeline</h2>
-                <div class="timeline">
-                    <div class="timeline-item" onclick="showSection('smart-home')">
-                        <div class="timeline-date">February 2026</div>
-                        <div class="timeline-title">Smart Home IoT</div>
-                        <div class="timeline-description">Automatic light and fan control</div>
+                <!-- Quick Access Cards -->
+                <h2 style="color: white; margin: 2rem 0 1rem 0;">Quick Access</h2>
+                <div class="content-grid">
+                    <div class="card" onclick="showSection('smart-home')" style="cursor: pointer;">
+                        <h3>💡 Smart Home IoT</h3>
+                        <p style="color: var(--light);">Automatic light and fan control system</p>
+                        <div style="margin-top: 1rem; color: var(--primary);">Click to open →</div>
                     </div>
-                    <div class="timeline-item" onclick="showSection('parking-task')">
-                        <div class="timeline-date">March 2026</div>
-                        <div class="timeline-title">Task 1: Parking Assistant</div>
-                        <div class="timeline-description">Ultrasonic sensor with LEDs</div>
+                    
+                    <div class="card" onclick="showSection('parking-task')" style="cursor: pointer;">
+                        <h3>🚗 Task 1: Parking Assistant</h3>
+                        <p style="color: var(--light);">Ultrasonic sensor with LED indicators</p>
+                        <div style="margin-top: 1rem; color: var(--primary);">Click to open →</div>
                     </div>
-                    <div class="timeline-item" onclick="showSection('circadian-task')">
-                        <div class="timeline-date">March 2026</div>
-                        <div class="timeline-title">Task 2: Circadian Lighting</div>
-                        <div class="timeline-description">RGB color temperature control</div>
-                    </div>
-                    <div class="timeline-item" onclick="showSection('led-task')">
-                        <div class="timeline-date">March 2026</div>
-                        <div class="timeline-title">Task 3: Interactive LED</div>
-                        <div class="timeline-description">ESP32 LED control system</div>
-                    </div>
-                </div>
 
-                <!-- Code Snippet (Decorative) -->
-                <h2 style="color: white; margin: 2rem 0 1rem 0;">💻 Core System</h2>
-                <div class="code-snippet">
-                    <pre>
-<span style="color: #6a9955;">// Smart Home IoT - Core Logic</span>
-<span style="color: #569cd6;">void</span> <span style="color: #dcdcaa;">loop</span>() {
-  <span style="color: #9cdcfe;">float</span> temp = dht.readTemperature();
-  <span style="color: #9cdcfe;">int</span> motion = digitalRead(PIR_PIN);
-  
-  <span style="color: #569cd6;">if</span>(temp >= TEMP_THRESHOLD) {
-    digitalWrite(RELAY_FAN, HIGH);
-  }
-}</pre>
+                    <div class="card" onclick="showSection('circadian-task')" style="cursor: pointer;">
+                        <h3>🌓 Task 2: Circadian Lighting</h3>
+                        <p style="color: var(--light);">RGB LED color temperature control</p>
+                        <div style="margin-top: 1rem; color: var(--primary);">Click to open →</div>
+                    </div>
+
+                    <div class="card" onclick="showSection('led-task')" style="cursor: pointer;">
+                        <h3>💡 Task 3: Interactive LED</h3>
+                        <p style="color: var(--light);">ESP32-based LED control system</p>
+                        <div style="margin-top: 1rem; color: var(--primary);">Click to open →</div>
+                    </div>
                 </div>
             </div>
 
@@ -754,7 +600,7 @@
                     <p>Automatic light and fan control system</p>
                 </div>
 
-                <!-- Progress Bar (Decorative) -->
+                <!-- Progress Bar -->
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: 100%;"></div>
                 </div>
@@ -765,7 +611,7 @@
                     <iframe src="https://wokwi.com/projects/456707908718215169/embed" allowfullscreen></iframe>
                 </div>
 
-                <!-- Info Box with Working Commands -->
+                <!-- Info Box -->
                 <div class="info-box">
                     <strong>📱 Serial Commands:</strong>
                     <code>'1' - Lamp ON | '0' - Lamp OFF | 'A' - AUTO Mode</code>
@@ -820,7 +666,7 @@
 
                 <!-- Task Details -->
                 <div class="task-list">
-                    <div class="task-item" style="cursor: default;">
+                    <div class="task-item">
                         <div class="task-icon">🚗</div>
                         <div class="task-content">
                             <div class="task-title">Parking Assistant System</div>
@@ -889,7 +735,7 @@
 
                 <!-- Task Details -->
                 <div class="task-list">
-                    <div class="task-item" style="cursor: default;">
+                    <div class="task-item">
                         <div class="task-icon">🌓</div>
                         <div class="task-content">
                             <div class="task-title">Circadian Lighting System</div>
@@ -957,7 +803,7 @@
 
                 <!-- Task Details -->
                 <div class="task-list">
-                    <div class="task-item" style="cursor: default;">
+                    <div class="task-item">
                         <div class="task-icon">💡</div>
                         <div class="task-content">
                             <div class="task-title">Interactive LED System</div>
@@ -1021,8 +867,21 @@
             // Find and highlight the clicked menu item
             if(event && event.currentTarget) {
                 event.currentTarget.classList.add('active');
+            } else {
+                // If no event (called from another function), find by sectionId
+                for(var i = 0; i < menuItems.length; i++) {
+                    if(menuItems[i].getAttribute('onclick') && menuItems[i].getAttribute('onclick').includes(sectionId)) {
+                        menuItems[i].classList.add('active');
+                        break;
+                    }
+                }
             }
         }
+
+        // Make sure home is active on page load
+        window.onload = function() {
+            showSection('home');
+        };
     </script>
 </body>
 </html>
